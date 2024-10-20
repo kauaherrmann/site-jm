@@ -1,0 +1,227 @@
+/* Estilização global, remove margens e define a fonte */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montse", Arial, sans-serif; /* Define a fonte principal */
+  color: #6c4950;
+}
+
+/* Define o layout da página com flexbox para organização */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: white; /* Cor de fundo neutra */
+}
+
+/* Estilos para o cabeçalho (header), com espaçamento e sombras */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5e5e5;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o header */
+  width: 100%;
+  position: relative;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Estilo para o menu lateral fixo */
+.menu-lateral {
+  width: 200px;
+  height: 100%;
+  background-color: #f4e9e9; /* Cor de fundo clara */
+  padding: 20px;
+  position: fixed; /* Fixa o menu na lateral */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra para separar do conteúdo */
+}
+
+/* Lista do menu lateral, organizada em coluna */
+.menu-lateral ul {
+  list-style: none; /* Remove a bolinha padrão da lista */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaçamento entre os itens da lista */
+  margin-top: 50px;
+  color: #6c4950;
+}
+
+/* Estilo para os itens do menu com ícones */
+.menu-lateral ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Tamanho dos ícones no menu lateral */
+.menu-lateral ul li img {
+  width: 50px;
+  height: 20px;
+  align-items: first baseline;
+}
+.titulo-centralizado {
+  flex: 1;
+  color: #6c4950;
+  text-align: right; /* Alinha o texto à direita */
+  padding-right: 530px; /* Adiciona espaçamento interno à direita */
+}
+/* Define o conteúdo principal, com margem para o menu lateral */
+main {
+  margin-top: 90px;
+  margin-left: 220px; /* Espaço para o menu lateral */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Logo da página */
+.logo_JM img {
+  width: 80px; /* Ajuste o valor para o tamanho desejado */
+  height: auto; /* Mantém a proporção correta da imagem */
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
+  display: block; /* Garante que a imagem seja tratada como um bloco */
+  margin-left: 30px;
+}
+
+/* Remove o sublinhado dos links em todas as situações */
+a {
+  text-decoration: none;
+  color: inherit; /* Mantém a cor original do texto */
+}
+
+/* Remove o sublinhado no hover, sem efeitos de hover */
+a:hover {
+  text-decoration: none;
+}
+
+/* Estilo específico para a página ativa (indicação de qual aba estou) */
+.menu-lateral ul li.active a {
+  background-color: #e9d6d5; /* Cor de fundo da aba ativa */
+  border-radius: 8px; /* Borda arredondada para o link ativo */
+  padding: 10px; /* Adiciona espaçamento ao redor do item ativo */
+  font-weight: bold; /* Deixa o texto mais forte para destacar */
+  width: 190px; /* Deixa o tamanho padrão horizontalmente */
+}
+/* Botão voltar posicionado com o alinhamento ao topo e à direita da logo */
+.botao-voltar {
+  position: absolute;
+  top: 11px; /* Ajusta o alinhamento ao topo */
+  left: 220px; /* Ajusta a posição à direita da logo */
+}
+
+.icone-voltar {
+  width: 50px; /* Ajuste o tamanho do ícone */
+  height: 50px; /* Mantenha as proporções */
+  cursor: pointer; /* Mostra o cursor de link ao passar o mouse */
+}
+
+.icone-voltar:hover {
+  opacity: 0.8; /* Efeito ao passar o mouse (opcional) */
+}
+/* -----------css destinado a tabela----------- */
+/* Painel dos clientes */
+.client-panel {
+  background-color: #f8f0f0;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+  cursor: pointer;
+  width: 1000px;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.client-header {
+  display: grid; /* deixa separado entre divisoes*/
+  grid-template-columns: 1fr 1fr 1fr; /* executa as divisoes em width*/
+  justify-content: space-between;
+  width: 95%;
+  align-self: center;
+}
+
+.client-details {
+  display: none;
+  padding-left: 20px;
+}
+
+.client-expanded {
+  display: flex;
+  flex-direction: row; /* Organiza a imagem e as informações lado a lado */
+  gap: 20px; /* Espaçamento entre a imagem e as informações */
+}
+
+.foto-cliente {
+  flex-shrink: 0; /* Garante que a imagem não encolha */
+}
+
+.foto-cliente img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.informacoes-detalhadas {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 80px;
+  margin-top: 15px;
+  gap: 10px;
+  width: 100%; /* Garante que as informações usem todo o espaço disponível à direita da imagem */
+}
+
+.informacoes-detalhadas p {
+  flex: 1 1 calc(50% - 20px); /* Distribui as informações em colunas de forma flexível */
+}
+
+/* Alinhar o ícone de lixeira no canto direito */
+.client-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto; /* Adiciona uma quarta coluna automática para o ícone */
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* Permite o posicionamento do botão de exclusão */
+}
+
+.delete-button {
+  position: absolute;
+  left: 900px; /* Coloca o botão 10px do lado direito */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icone-excluir {
+  width: 20px;
+  height: 20px;
+}
+
+.delete-button:hover .icone-excluir {
+  filter: brightness(0.8); /* Efeito ao passar o mouse */
+}
+
+/*icone de cadastrar novo cliente*/
+.adicionar-novo-cliente {
+  position: absolute;
+  top: 12px; /* Ajusta o alinhamento ao topo */
+  left: 290px; /* Ajusta a posição à direita da logo */
+}
+.icone-de-adicionar {
+  width: 46px; /* Ajuste o tamanho do ícone */
+  height: 46px; /* Mantenha as proporções */
+  cursor: pointer; /* Mostra o cursor de link ao passar o mouse */
+}
+.icone-de-adicionar:hover {
+  opacity: 0.8; /* Efeito ao passar o mouse (opcional) */
+}

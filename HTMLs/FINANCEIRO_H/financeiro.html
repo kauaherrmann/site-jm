@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finanças</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="/CSs/FINANCEIRO_C/financeiro.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <!-- Cabeçalho com o menu lateral, título central e barra de busca -->
+    <header>
+      <!-- Menu lateral à esquerda com ícones e links -->
+      <div class="menu-lateral">
+        <!-- Adicione a logo da sua cunhada aqui -->
+        <div class="logo_JM">
+          <a href="index.html"><img src="/IMGs/logo_JM.PNG" alt="logo_JM" /></a>
+          <!-- Logotipo a esquerda -->
+        </div>
+        <ul>
+          <li>
+            <a href="index.html"
+              ><img src="/IMGs/home.svg" alt="Icone" /> Home</a
+            >
+          </li>
+          <li>
+            <a href="/HTMLs/USUÁRIO_H/usuario.html"
+              ><img src="/IMGs/usuário.svg" alt="Icone" /> Usuário</a
+            >
+          </li>
+          <li class="active">
+            <a href="financeiro.html"
+              ><img src="/IMGs/financeiro.svg" alt="Icone" /> Financeiro</a
+            >
+          </li>
+          <li>
+            <a href="calendario.html"
+              ><img src="/IMGs/calendario.svg" alt="Icone" /> Calendário</a
+            >
+          </li>
+          <li>
+            <a href="materias.html"
+              ><img src="/IMGs/caixa.svg" alt="Icone" /> Matérias</a
+            >
+          </li>
+          <li>
+            <a href="configuracoes.html"
+              ><img src="/IMGs/configuracao.svg" alt="Icone" /> Ajustes</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Título centralizado na tela -->
+      <div class="titulo-centralizado">
+        <h1>Financeiro</h1>
+      </div>
+    </header>
+    <main>
+      <!-- Resumo financeiro em balões -->
+      <section class="resumo-financeiro">
+        <a href="/HTMLs/grafico.html" class="balao-link">
+          <div class="balao">
+            <h3>Receita Total</h3>
+            <p>R$ 50.000,00</p>
+          </div>
+        </a>
+        <a href="/HTMLs/grafico.html" class="balao-link">
+          <div class="balao">
+            <h3>Despesas Totais</h3>
+            <p>R$ 30.000,00</p>
+          </div>
+        </a>
+        <a href="/HTMLs/grafico.html" class="balao-link">
+          <div class="balao">
+            <h3>Lucro</h3>
+            <p>R$ 20.000,00</p>
+          </div>
+        </a>
+      </section>
+      <div class="grafico-quadrado">
+        <canvas id="graficoMes"></canvas>
+      </div>
+    </main>
+
+    <script>
+      // Gráfico do Mês usando Chart.js
+      const ctx = document.getElementById("graficoMes").getContext("2d");
+      const graficoMes = new Chart(ctx, {
+        type: "bar", // ou 'line', 'pie', etc. dependendo do gráfico que você deseja
+        data: {
+          labels: ["Semana 1", "Semana 2", "Semana 3", "Semana 4"],
+          datasets: [
+            {
+              label: "Desempenho Financeiro",
+              data: [12000, 15000, 18000, 13000],
+              backgroundColor: "rgba(75, 192, 192, 0.5)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false, // Permite que o gráfico se ajuste ao tamanho do canvas
+          responsive: true,
+        },
+      });
+    </script>
+  </body>
+</html>

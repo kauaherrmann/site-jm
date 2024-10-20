@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Histórico de Consultas</title>
+    <link rel="stylesheet" href="/CSs/USUÁRIO/historico_de_consultas.css" />
+  </head>
+  <body>
+    <header>
+      <div class="menu-lateral">
+        <div class="logo_JM">
+          <a href="index.html"><img src="/IMGs/logo_JM.PNG" alt="logo_JM" /></a>
+        </div>
+        <ul>
+          <li>
+            <a href="index.html"
+              ><img src="/IMGs/home.svg" alt="Icone" /> Home</a
+            >
+          </li>
+          <li class="active">
+            <a href="/HTMLs/USUÁRIO_H/usuario.html"
+              ><img src="/IMGs/usuário.svg" alt="Icone" /> Usuário</a
+            >
+          </li>
+          <li>
+            <a href="/HTMLs/FINANCEIRO_H/financeiro.html"
+              ><img src="/IMGs/financeiro.svg" alt="Icone" /> Financeiro</a
+            >
+          </li>
+          <li>
+            <a href="calendario.html"
+              ><img src="/IMGs/calendario.svg" alt="Icone" /> Calendário</a
+            >
+          </li>
+          <li>
+            <a href="materias.html"
+              ><img src="/IMGs/caixa.svg" alt="Icone" /> Matérias</a
+            >
+          </li>
+          <li>
+            <a href="configuracoes.html"
+              ><img src="/IMGs/configuracao.svg" alt="Icone" /> Ajustes</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="titulo-centralizado">
+        <h1>Histórico de Consultas</h1>
+      </div>
+
+      <div class="botao-voltar">
+        <a href="javascript:history.back()">
+          <img src="/IMGs/Botao_Voltar.svg" alt="Voltar" class="icone-voltar" />
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="historico-consultas">
+        <ul id="listaConsultas">
+          <!-- Consultas serão listadas aqui -->
+        </ul>
+      </section>
+    </main>
+
+    <script>
+      // Função para carregar e exibir as consultas salvas
+      function carregarConsultas() {
+        // Recupera as consultas do localStorage
+        const consultas = JSON.parse(localStorage.getItem("consultas")) || [];
+
+        // Seleciona o elemento da lista de consultas no HTML
+        const listaConsultas = document.getElementById("listaConsultas");
+
+        // Limpa a lista antes de adicionar novos elementos
+        listaConsultas.innerHTML = "";
+
+        // Verifica se há consultas para exibir
+        if (consultas.length === 0) {
+          listaConsultas.innerHTML = "<li>Nenhuma consulta encontrada.</li>";
+        } else {
+          // Percorre a lista de consultas e cria elementos para cada uma
+          consultas.forEach((consulta, index) => {
+            const consultaItem = document.createElement("li");
+            consultaItem.innerHTML = `
+         <div class="info">
+            <strong>Data:</strong> ${consulta.data}
+            <strong>Procedimento:</strong> ${consulta.procedimento}
+            <strong>Doenças:</strong> ${consulta.doencas || "N/A"}
+            <strong>Alergias:</strong> ${consulta.alergias || "N/A"}
+            <strong>Medicamentos:</strong> ${consulta.medicamentos || "N/A"}
+            <strong>Gravidez:</strong> ${consulta.gravidez ? "Sim" : "Não"}
+            <strong>Amamentando:</strong> ${
+              consulta.amamentando ? "Sim" : "Não"
+            }
+            <strong>Cicatrização:</strong> ${consulta.cicatrizacao || "N/A"}
+            <strong>Autoimune:</strong> ${consulta.autoimune ? "Sim" : "Não"}
+            <button onclick="excluirConsulta(${index})">Excluir</button>
+         </div>
+          `;
+            listaConsultas.appendChild(consultaItem);
+          });
+        }
+      }
+
+      // Função para excluir uma consulta do histórico
+      function excluirConsulta(index) {
+        let consultas = JSON.parse(localStorage.getItem("consultas")) || [];
+
+        // Remove a consulta da lista
+        consultas.splice(index, 1);
+
+        // Atualiza o localStorage
+        localStorage.setItem("consultas", JSON.stringify(consultas));
+
+        // Recarrega as consultas atualizadas
+        carregarConsultas();
+      }
+
+      // Carrega as consultas quando a página é aberta
+      window.onload = carregarConsultas;
+    </script>
+  </body>
+</html>

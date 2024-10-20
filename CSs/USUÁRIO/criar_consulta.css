@@ -1,0 +1,201 @@
+/* Estilização global, remove margens e define a fonte */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montse", Arial, sans-serif; /* Define a fonte principal */
+}
+
+/* Define o layout da página com flexbox para organização */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: white; /* Cor de fundo neutra */
+}
+
+/* Estilos para o cabeçalho (header), com espaçamento e sombras */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5e5e5;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o header */
+  width: 100%;
+  position: relative;
+  height: 70px;
+}
+
+/* Estilo para o menu lateral fixo */
+.menu-lateral {
+  width: 200px;
+  height: 100%;
+  background-color: #f4e9e9; /* Cor de fundo clara */
+  padding: 20px;
+  position: fixed; /* Fixa o menu na lateral */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra para separar do conteúdo */
+}
+
+/* Lista do menu lateral, organizada em coluna */
+.menu-lateral ul {
+  list-style: none; /* Remove a bolinha padrão da lista */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaçamento entre os itens da lista */
+  margin-top: 50px;
+  color: #6c4950;
+}
+
+/* Estilo para os itens do menu com ícones */
+.menu-lateral ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Tamanho dos ícones no menu lateral */
+.menu-lateral ul li img {
+  width: 50px;
+  height: 20px;
+  align-items: first baseline;
+}
+
+.titulo-centralizado {
+  flex: 1;
+  color: #6c4950;
+  text-align: right; /* Alinha o texto à direita */
+  padding-right: 530px; /* Adiciona espaçamento interno à direita */
+}
+
+/* Define o conteúdo principal, com margem para o menu lateral */
+main {
+  margin-left: 220px; /* Espaço para o menu lateral */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Logo da página */
+.logo_JM img {
+  width: 80px; /* Ajuste o valor para o tamanho desejado */
+  height: auto; /* Mantém a proporção correta da imagem */
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
+  display: block; /* Garante que a imagem seja tratada como um bloco */
+  margin-left: 30px;
+}
+
+/* Remove o sublinhado dos links em todas as situações */
+a {
+  text-decoration: none;
+  color: inherit; /* Mantém a cor original do texto */
+}
+
+/* Remove o sublinhado no hover, sem efeitos de hover */
+a:hover {
+  text-decoration: none;
+}
+
+/* Estilo específico para a página ativa (indicação de qual aba estou) */
+.menu-lateral ul li.active a {
+  background-color: #e9d6d5; /* Cor de fundo da aba ativa */
+  border-radius: 8px; /* Borda arredondada para o link ativo */
+  padding: 10px; /* Adiciona espaçamento ao redor do item ativo */
+  font-weight: bold; /* Deixa o texto mais forte para destacar */
+  width: 190px; /* Deixa o tamanho padrão horizontalmente */
+}
+
+/* Botão de envio */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* Botão voltar posicionado com o alinhamento ao topo e à direita da logo */
+.botao-voltar {
+  position: absolute;
+  top: 11px; /* Ajusta o alinhamento ao topo */
+  left: 220px; /* Ajusta a posição à direita da logo */
+}
+
+.icone-voltar {
+  width: 50px; /* Ajuste o tamanho do ícone */
+  height: 50px; /* Mantenha as proporções */
+  cursor: pointer; /* Mostra o cursor de link ao passar o mouse */
+}
+
+.icone-voltar:hover {
+  opacity: 0.8; /* Efeito ao passar o mouse (opcional) */
+}
+
+/* Estiliza a seção da consulta */
+.consulta-container {
+  background-color: #f7f7f7; /* Fundo suave */
+  border-radius: 8px; /* Borda arredondada */
+  padding: 15px;
+  width: 80%; /* Largura da seção */
+}
+
+/* Define os estilos dos formulários e seus elementos */
+h2 {
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Espaçamento entre os rótulos e os campos */
+label {
+  margin-bottom: 5px; /* Espaçamento inferior para o rótulo */
+  display: block; /* Cada rótulo em linha própria */
+}
+
+/* Estilo para campos de texto, data e textarea */
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%; /* Campos ocupam toda a largura */
+  padding: 10px;
+  border: 1px solid #ccc; /* Borda suave */
+  border-radius: 4px; /* Bordas arredondadas */
+  margin-bottom: 15px; /* Espaçamento inferior */
+}
+
+/* Estilo para o botão de envio */
+input[type="submit"] {
+  background-color: #6c4950; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 10px 15px; /* Espaçamento interno */
+  cursor: pointer; /* Muda o cursor ao passar o mouse */
+  margin-top: 15px;
+}
+
+/* Muda a cor do botão ao passar o mouse */
+input[type="submit"]:hover {
+  background-color: #a05a6d; /* Cor de fundo mais escura ao passar o mouse */
+}
+
+.checkbox-container {
+  display: flex; /* Alinha os itens em linha */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 20px; /* Espaçamento entre os itens */
+}
+
+/* Estilização dos checkboxes para que apareçam na mesma linha */
+.checkbox-container label {
+  margin: 0; /* Remove margens do rótulo para alinhamento correto */
+}

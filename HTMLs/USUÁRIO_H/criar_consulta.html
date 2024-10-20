@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Consulta</title>
+    <link rel="stylesheet" href="/CSs/USUÁRIO/criar_consulta.css" />
+  </head>
+  <body>
+    <header>
+      <div class="menu-lateral">
+        <div class="logo_JM">
+          <a href="index.html">
+            <img src="/IMGs/logo_JM.PNG" alt="logo_JM" />
+          </a>
+        </div>
+        <ul>
+          <li>
+            <a href="index.html"
+              ><img src="/IMGs/home.svg" alt="Icone" /> Home</a
+            >
+          </li>
+          <li class="active">
+            <a href="/HTMLs/USUÁRIO_H/usuario.html"
+              ><img src="/IMGs/usuário.svg" alt="Icone" /> Usuário</a
+            >
+          </li>
+          <li>
+            <a href="/HTMLs/FINANCEIRO_H/financeiro.html"
+              ><img src="/IMGs/financeiro.svg" alt="Icone" /> Financeiro</a
+            >
+          </li>
+          <li>
+            <a href="calendario.html"
+              ><img src="/IMGs/calendario.svg" alt="Icone" /> Calendário</a
+            >
+          </li>
+          <li>
+            <a href="materias.html"
+              ><img src="/IMGs/caixa.svg" alt="Icone" /> Matérias</a
+            >
+          </li>
+          <li>
+            <a href="configuracoes.html"
+              ><img src="/IMGs/configuracao.svg" alt="Icone" /> Ajustes</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="titulo-centralizado">
+        <h1>Criar Consulta</h1>
+      </div>
+
+      <div class="botao-voltar">
+        <a href="javascript:history.back()">
+          <img src="/IMGs/Botao_Voltar.svg" alt="Voltar" class="icone-voltar" />
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="consulta-container">
+        <form id="consultaForm">
+          <label for="consultaData">Data da Consulta:</label>
+          <input type="date" id="consultaData" name="consultaData" required />
+
+          <label for="procedimento">Procedimento:</label>
+          <input type="text" id="procedimento" name="procedimento" required />
+
+          <label for="doencas">Doenças:</label>
+          <textarea id="doencas" name="doencas"></textarea>
+
+          <label for="alergias">Alergias:</label>
+          <textarea id="alergias" name="alergias"></textarea>
+
+          <label for="medicamentos">Medicamentos:</label>
+          <textarea id="medicamentos" name="medicamentos"></textarea>
+
+          <label for="cicatrizacao">Como é a cicatrização?</label>
+          <textarea id="cicatrizacao" name="cicatrizacao"></textarea>
+          <div class="checkbox-container">
+            <label for="gravidez">Está grávida?</label>
+            <input type="checkbox" id="gravidez" name="gravidez" />
+
+            <label for="amamentando">Está amamentando?</label>
+            <input type="checkbox" id="amamentando" name="amamentando" />
+
+            <label for="autoimune">Possui doença autoimune?</label>
+            <input type="checkbox" id="autoimune" name="autoimune" />
+          </div>
+          <input type="submit" value="Salvar Consulta" />
+        </form>
+      </section>
+    </main>
+
+    <script>
+      // Função para salvar consulta no localStorage
+      document
+        .getElementById("consultaForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Impede o envio padrão do formulário
+
+          // Coletando dados do formulário
+          const consultaData = document.getElementById("consultaData").value;
+          const procedimento = document.getElementById("procedimento").value;
+          const doencas = document.getElementById("doencas").value;
+          const alergias = document.getElementById("alergias").value;
+          const medicamentos = document.getElementById("medicamentos").value;
+          const gravidez = document.getElementById("gravidez").checked;
+          const amamentando = document.getElementById("amamentando").checked;
+          const cicatrizacao = document.getElementById("cicatrizacao").value;
+          const autoimune = document.getElementById("autoimune").checked;
+
+          // Criando um objeto para armazenar os dados da consulta
+          const novaConsulta = {
+            data: consultaData,
+            procedimento: procedimento,
+            doencas: doencas,
+            alergias: alergias,
+            medicamentos: medicamentos,
+            gravidez: gravidez,
+            amamentando: amamentando,
+            cicatrizacao: cicatrizacao,
+            autoimune: autoimune,
+          };
+
+          // Verificando se já existem consultas salvas
+          let consultas = JSON.parse(localStorage.getItem("consultas")) || [];
+
+          // Adicionando a nova consulta à lista de consultas
+          consultas.push(novaConsulta);
+
+          // Salvando a lista atualizada no localStorage
+          localStorage.setItem("consultas", JSON.stringify(consultas));
+
+          // Exibindo uma mensagem de sucesso e limpando o formulário
+          alert("Consulta salva com sucesso!");
+          document.getElementById("consultaForm").reset();
+        });
+    </script>
+  </body>
+</html>

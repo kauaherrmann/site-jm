@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes Cadastrados</title>
+    <link rel="stylesheet" href="/CSs/USUÁRIO/clientes.css" />
+  </head>
+  <body>
+    <header>
+      <div class="menu-lateral">
+        <div class="logo_JM">
+          <a href="index.html"><img src="/IMGs/logo_JM.PNG" alt="logo_JM" /></a>
+        </div>
+        <ul>
+          <li>
+            <a href="index.html"
+              ><img src="/IMGs/home.svg" alt="Icone" /> Home</a
+            >
+          </li>
+          <li class="active">
+            <a href="/HTMLs/USUÁRIO_H/usuario.html"
+              ><img src="/IMGs/usuário.svg" alt="Icone" /> Usuário</a
+            >
+          </li>
+          <li>
+            <a href="/HTMLs/FINANCEIRO_H/financeiro.html"
+              ><img src="/IMGs/financeiro.svg" alt="Icone" /> Financeiro</a
+            >
+          </li>
+          <li>
+            <a href="calendario.html"
+              ><img src="/IMGs/calendario.svg" alt="Icone" /> Calendário</a
+            >
+          </li>
+          <li>
+            <a href="materias.html"
+              ><img src="/IMGs/caixa.svg" alt="Icone" /> Matérias</a
+            >
+          </li>
+          <li>
+            <a href="configuracoes.html"
+              ><img src="/IMGs/configuracao.svg" alt="Icone" /> Ajustes</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="titulo-centralizado">
+        <h1>Clientes Cadastrados</h1>
+      </div>
+
+      <div class="botao-voltar">
+        <a href="javascript:history.back()">
+          <img src="/IMGs/Botao_Voltar.svg" alt="Voltar" class="icone-voltar" />
+        </a>
+      </div>
+      <div class="adicionar-novo-cliente">
+        <a href="/HTMLs/USUÁRIO_H/cadastro.html">
+          <img
+            src="/IMGs/icone-de-adicionar-cliente.svg"
+            alt="adicinar"
+            class="icone-de-adicionar"
+          />
+        </a>
+      </div>
+    </header>
+    <main>
+      <!-- Tabela de clientes -->
+      <div id="clientesTabela">
+        <p>Nenhum cliente cadastrado.</p>
+      </div>
+    </main>
+
+    <script>
+      // Função para carregar os clientes do localStorage e exibi-los na tabela
+      function carregarClientes() {
+        const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+        console.log(clientes); // Para depurar - Verifique os dados carregados
+        const tabela = document.getElementById("clientesTabela");
+
+        if (clientes.length === 0) {
+          tabela.innerHTML = "<p>Nenhum cliente cadastrado.</p>";
+        } else {
+          tabela.innerHTML = ""; // Limpa a tabela antes de preenchê-la
+
+          // Ordena os clientes pela data de criação do mais recente para o mais antigo
+          clientes.sort((a, b) => {
+            return new Date(b.dataCriacao) - new Date(a.dataCriacao);
+          });
+
+          clientes.forEach((cliente, index) => {
+            const clienteHTML = `
+          <div class="client-panel">
+              <div class="client-header" onclick="toggleDetails(${index})">
+                  <p><strong>Nome:</strong> ${cliente.nome}</p>
+                  <p><strong>Contato:</strong> ${cliente.contato}</p>
+                  <p><strong>E-mail:</strong> ${cliente.email}</p>
+                  <button onclick="excluirCliente(${index})" class="delete-button">
+                      <img src="/IMGs/icone_lixo.svg" alt="Excluir" class="icone-excluir" />
+                  </button>
+              </div>
+              <div id="client-details-${index}" class="client-details">
+                  <div class="client-expanded">
+                      <div class="foto-cliente">
+                          <img src="${cliente.foto}" alt="Foto do Cliente" />
+                      </div>
+                      <div class="informacoes-detalhadas">
+                          <p><strong>Data de Nascimento:</strong> ${cliente.dataNascimento}</p>
+                          <p><strong>Nome do Pai:</strong> ${cliente.nomePai}</p>
+                          <p><strong>Nome da Mãe:</strong> ${cliente.nomeMae}</p>
+                          <p><strong>Número do Pai:</strong> ${cliente.contatoPai}</p>
+                          <p><strong>Número da Mãe:</strong> ${cliente.contatoMae}</p>
+                          <p><strong>Como conheceu:</strong> ${cliente.origem}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>`;
+            tabela.insertAdjacentHTML("beforeend", clienteHTML);
+          });
+        }
+      }
+
+      // Função de excluir pessoa da lista
+      function excluirCliente(index) {
+        const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+        clientes.splice(index, 1); // Remove o cliente do array
+        localStorage.setItem("clientes", JSON.stringify(clientes)); // Atualiza o localStorage
+        carregarClientes(); // Atualiza a tabela após a exclusão
+      }
+
+      // Função para expandir ou colapsar os detalhes do cliente
+      function toggleDetails(index) {
+        const details = document.getElementById(`client-details-${index}`);
+        if (details.style.display === "none" || details.style.display === "") {
+          details.style.display = "block";
+        } else {
+          details.style.display = "none";
+        }
+      }
+
+      // Chama a função ao carregar a página
+      window.onload = carregarClientes;
+    </script>
+  </body>
+</html>

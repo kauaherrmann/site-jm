@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="/CSs/USUÁRIO/cadastro.css" />
+  </head>
+  <body>
+    <header>
+      <div class="menu-lateral">
+        <div class="logo_JM">
+          <a href="index.html"><img src="/IMGs/logo_JM.PNG" alt="logo_JM" /></a>
+        </div>
+        <ul>
+          <li>
+            <a href="index.html"
+              ><img src="/IMGs/home.svg" alt="Icone" /> Home</a
+            >
+          </li>
+          <li class="active">
+            <a href="/HTMLs/USUÁRIO_H/usuario.html"
+              ><img src="/IMGs/usuário.svg" alt="Icone" /> Usuário</a
+            >
+          </li>
+          <li>
+            <a href="/HTMLs/FINANCEIRO_H/financeiro.html"
+              ><img src="/IMGs/financeiro.svg" alt="Icone" /> Financeiro</a
+            >
+          </li>
+          <li>
+            <a href="calendario.html"
+              ><img src="/IMGs/calendario.svg" alt="Icone" /> Calendário</a
+            >
+          </li>
+          <li>
+            <a href="materias.html"
+              ><img src="/IMGs/caixa.svg" alt="Icone" /> Matérias</a
+            >
+          </li>
+          <li>
+            <a href="configuracoes.html"
+              ><img src="/IMGs/configuracao.svg" alt="Icone" /> Ajustes</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="titulo-centralizado">
+        <h1>Cadastro de Cliente</h1>
+      </div>
+
+      <div class="botao-voltar">
+        <a href="javascript:history.back()">
+          <img src="/IMGs/Botao_Voltar.svg" alt="Voltar" class="icone-voltar" />
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <form id="cadastroForm">
+        <!-- Primeira coluna -->
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required />
+        </div>
+
+        <!-- Adicionar campo para número de contato -->
+        <div class="form-group">
+          <label for="contato">Número de Contato:</label>
+          <input type="text" id="contato" name="contato" required />
+        </div>
+
+        <!-- Manter o campo de data de nascimento -->
+        <div class="form-group">
+          <label for="dataNascimento">Data de Nascimento:</label>
+          <input
+            type="date"
+            id="dataNascimento"
+            name="dataNascimento"
+            required
+          />
+        </div>
+
+        <!-- Outros campos existentes -->
+        <div class="form-group">
+          <label for="nomePai">Nome do Pai:</label>
+          <input type="text" id="nomePai" name="nomePai" />
+        </div>
+
+        <div class="form-group">
+          <label for="nomeMae">Nome da Mãe:</label>
+          <input type="text" id="nomeMae" name="nomeMae" />
+        </div>
+
+        <div class="form-group">
+          <label for="contatoPai">Número do Pai:</label>
+          <input type="text" id="contatoPai" name="contatoPai" />
+        </div>
+
+        <div class="form-group">
+          <label for="contatoMae">Número da Mãe:</label>
+          <input type="text" id="contatoMae" name="contatoMae" />
+        </div>
+
+        <div class="form-group">
+          <label for="origem">Como conheceu:</label>
+          <input type="text" id="origem" name="origem" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <!-- Campo para adicionar a foto -->
+        <div class="form-group">
+          <label for="foto" class="custom-file-upload">
+            <img
+              src="/IMGs/icone_adicionar_foto.svg"
+              alt="Adicionar Foto"
+              class="icon-adicionar-foto"
+            />
+          </label>
+          <input
+            type="file"
+            id="foto"
+            name="foto"
+            accept="image/*"
+            onchange="previewFoto(event)"
+            style="display: none"
+          />
+          <img id="fotoPreview" src="" alt="" class="foto-preview" />
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+
+      <!-- Mensagem de confirmação -->
+      <div id="mensagemConfirmacao" style="display: none">
+        <p>Cadastro realizado com sucesso!</p>
+      </div>
+    </main>
+
+    <script>
+      // Função para pré-visualização da foto
+      function previewFoto(event) {
+        const input = event.target;
+        const preview = document.getElementById("fotoPreview");
+        const file = input.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = "block"; // Exibe a pré-visualização quando houver uma imagem
+          };
+          reader.readAsDataURL(file);
+        } else {
+          preview.src = "";
+          preview.style.display = "none"; // Oculta a pré-visualização quando não houver imagem
+        }
+      }
+
+      // Função para lidar com o envio do formulário
+      document
+        .getElementById("cadastroForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Coletar dados do formulário
+          const nome = document.getElementById("nome").value;
+          const contato = document.getElementById("contato").value; // Coleta o número de contato
+          const dataNascimento =
+            document.getElementById("dataNascimento").value; // Coleta a data de nascimento
+          const nomePai = document.getElementById("nomePai").value;
+          const nomeMae = document.getElementById("nomeMae").value;
+          const contatoPai = document.getElementById("contatoPai").value;
+          const contatoMae = document.getElementById("contatoMae").value;
+          const origem = document.getElementById("origem").value;
+          const email = document.getElementById("email").value;
+          const fotoInput = document.getElementById("foto").files[0];
+
+          // Verifica se o arquivo de foto foi selecionado
+          if (fotoInput) {
+            const reader = new FileReader();
+            reader.onloadend = function () {
+              const base64Image = reader.result;
+
+              // Criar objeto cliente com a imagem em base64
+              const cliente = {
+                nome,
+                contato, // Número de contato
+                dataNascimento, // Data de nascimento será exibida no detalhe
+                nomePai,
+                nomeMae,
+                contatoPai,
+                contatoMae,
+                origem,
+                email,
+                foto: base64Image, // Armazena a imagem em base64
+                dataCriacao: new Date().toISOString(), // Adicionando a data de criação
+              };
+
+              // Armazenar no localStorage
+
+              const clientes =
+                JSON.parse(localStorage.getItem("clientes")) || [];
+              clientes.push(cliente);
+              localStorage.setItem("clientes", JSON.stringify(clientes));
+              console.log(clientes); // Para depurar
+
+              // Exibir mensagem de confirmação e redirecionar
+              document.getElementById("mensagemConfirmacao").style.display =
+                "block";
+              setTimeout(function () {
+                window.location.href = "/HTMLs/USUÁRIO_H/clientes.html";
+              }, 2000);
+            };
+
+            // Ler o arquivo da foto como DataURL (base64)
+            reader.readAsDataURL(fotoInput);
+          } else {
+            // Caso não tenha foto, cadastrar normalmente
+            const cliente = {
+              nome,
+              contato, // Número de contato
+              dataNascimento, // Data de nascimento será exibida no detalhe
+              nomePai,
+              nomeMae,
+              contatoPai,
+              contatoMae,
+              origem,
+              email,
+              foto: "", // Sem foto
+              dataCriacao: new Date().toISOString(), // Adicionando a data de criação
+            };
+
+            // Armazenar no localStorage
+            const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+            clientes.push(cliente);
+            localStorage.setItem("clientes", JSON.stringify(clientes));
+
+            // Exibir mensagem de confirmação e redirecionar
+            document.getElementById("mensagemConfirmacao").style.display =
+              "block";
+            setTimeout(function () {
+              window.location.href = "/HTMLs/USUÁRIO_H/clientes.html";
+            }, 2000);
+          }
+        });
+    </script>
+  </body>
+</html>

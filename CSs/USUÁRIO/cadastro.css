@@ -1,0 +1,251 @@
+/* Estilização global, remove margens e define a fonte */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montse", Arial, sans-serif; /* Define a fonte principal */
+}
+
+/* Define o layout da página com flexbox para organização */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: white; /* Cor de fundo neutra */
+}
+
+/* Estilos para o cabeçalho (header), com espaçamento e sombras */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5e5e5;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o header */
+  width: 100%;
+  position: relative;
+  height: 70px;
+}
+
+/* Estilo para o menu lateral fixo */
+.menu-lateral {
+  width: 200px;
+  height: 100%;
+  background-color: #f4e9e9; /* Cor de fundo clara */
+  padding: 20px;
+  position: fixed; /* Fixa o menu na lateral */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra para separar do conteúdo */
+}
+
+/* Lista do menu lateral, organizada em coluna */
+.menu-lateral ul {
+  list-style: none; /* Remove a bolinha padrão da lista */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaçamento entre os itens da lista */
+  margin-top: 50px;
+  color: #6c4950;
+}
+
+/* Estilo para os itens do menu com ícones */
+.menu-lateral ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Tamanho dos ícones no menu lateral */
+.menu-lateral ul li img {
+  width: 50px;
+  height: 20px;
+  align-items: first baseline;
+}
+
+/* Centraliza o título no meio do cabeçalho */
+.titulo-centralizado {
+  flex: 1;
+  color: #6c4950;
+  text-align: right; /* Alinha o texto à direita */
+  padding-right: 530px; /* Adiciona espaçamento interno à direita */
+}
+/* Define o conteúdo principal, com margem para o menu lateral */
+main {
+  margin-left: 220px; /* Espaço para o menu lateral */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Logo da página */
+.logo_JM img {
+  width: 80px; /* Ajuste o valor para o tamanho desejado */
+  height: auto; /* Mantém a proporção correta da imagem */
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
+  display: block; /* Garante que a imagem seja tratada como um bloco */
+  margin-left: 30px;
+}
+
+/* Remove o sublinhado dos links em todas as situações */
+a {
+  text-decoration: none;
+  color: inherit; /* Mantém a cor original do texto */
+}
+
+/* Remove o sublinhado no hover, sem efeitos de hover */
+a:hover {
+  text-decoration: none;
+}
+
+/* Estilo específico para a página ativa (indicação de qual aba estou) */
+.menu-lateral ul li.active a {
+  background-color: #e9d6d5; /* Cor de fundo da aba ativa */
+  border-radius: 8px; /* Borda arredondada para o link ativo */
+  padding: 10px; /* Adiciona espaçamento ao redor do item ativo */
+  font-weight: bold; /* Deixa o texto mais forte para destacar */
+  width: 190px; /* Deixa o tamanho padrão horizontalmente */
+}
+
+/* Estiliza o container do campo para alinhar o label e o input */
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+  width: 48%; /* Para dividir em duas colunas */
+}
+
+/* Torna o formulário flexível e cria duas colunas */
+form {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os campos se distribuam em duas colunas */
+  gap: 20px; /* Espaçamento entre os campos */
+  justify-content: space-between; /* Espaço uniforme entre as colunas */
+  max-width: 1200px;
+  margin: 20px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estiliza os rótulos */
+label {
+  width: 150px; /* Define a largura do label */
+  font-weight: bold;
+  text-align: right; /* Alinha o texto à direita */
+  margin-right: 10px; /* Espaço entre o label e o campo de entrada */
+  color: rgb(108, 73, 80);
+}
+
+/* Estiliza os campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"] {
+  width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Ajusta o estilo do botão de submissão */
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: rgb(108, 73, 80);
+}
+/* Botão de envio */
+button[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: rgb(151,102,112);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: rgb(76, 51, 56);
+}
+
+/* Botão voltar posicionado com o alinhamento ao topo e à direita da logo */
+.botao-voltar {
+  position: absolute;
+  top: 11px; /* Ajusta o alinhamento ao topo */
+  left: 220px; /* Ajusta a posição à direita da logo */
+}
+
+.icone-voltar {
+  width: 50px; /* Ajuste o tamanho do ícone */
+  height: 50px; /* Mantenha as proporções */
+  cursor: pointer; /* Mostra o cursor de link ao passar o mouse */
+}
+
+.icone-voltar:hover {
+  opacity: 0.8; /* Efeito ao passar o mouse //opcional// */
+}
+
+/* Estilo do link para lista de clientes */
+.link-lista-clientes {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.link-lista-clientes a {
+  color: rgb(108, 73, 80);
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-lista-clientes a:hover {
+  text-decoration: underline;
+}
+/* Oculta o input padrão de arquivo */
+input[type="file"] {
+  display: none;
+}
+
+/* Estilo do ícone que será clicável */
+.custom-file-upload {
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Estilo do ícone de adicionar foto */
+.icon-adicionar-foto {
+  width: 50px; /* Ajuste o tamanho do ícone conforme necessário */
+  height: 50px;
+  cursor: pointer; /* Mostra o cursor de clique */
+  margin-left: 50px;
+}
+
+.icon-adicionar-foto:hover {
+  opacity: 0.8; /* Efeito de hover para feedback visual */
+}
+
+/* Estiliza a pré-visualização da imagem */
+.foto-preview {
+  width: 50px; /* Largura fixa */
+  height: 50px; /* Altura fixa */
+  object-fit: cover; /* Ajusta a imagem para cobrir o contêiner */
+  border-radius: 4px; /* Deixe as bordas arredondadas se desejar */
+  display: none; /* Oculta até a imagem ser carregada */
+  margin-left: 20px;
+}
