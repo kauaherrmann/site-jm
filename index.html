@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Financeiro</title>
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <!-- Cabeçalho com o menu lateral, título central e barra de busca -->
+    <header>
+      <!-- Menu lateral à esquerda com ícones e links -->
+      <div class="menu-lateral">
+        <!-- Adicione a logo da sua cunhada aqui -->
+        <div class="logo_JM">
+          <img src="/IMGs/logo_JM.PNG" alt="logo_JM" />
+          <!-- Logotipo a esquerda -->
+        </div>
+        <ul>
+          <li class="active">
+            <a href="/HTMLs/DashBord.html"
+              ><img src="/IMGs/home.svg" alt="Icone" /> Home</a
+            >
+          </li>
+          <li>
+            <a href="/HTMLs/USUÁRIO_H/usuario.html"
+              ><img src="/IMGs/usuário.svg" alt="Icone" /> Usuário</a
+            >
+          </li>
+          <li>
+            <a href="/HTMLs/FINANCEIRO_H/financeiro.html"
+              ><img src="/IMGs/financeiro.svg" alt="Icone" /> Financeiro</a
+            >
+          </li>
+          <li>
+            <a href="calendario.html"
+              ><img src="/IMGs/calendario.svg" alt="Icone" /> Calendário</a
+            >
+          </li>
+          <li>
+            <a href="materias.html"
+              ><img src="/IMGs/caixa.svg" alt="Icone" /> Matérias</a
+            >
+          </li>
+          <li>
+            <a href="configuracoes.html"
+              ><img src="/IMGs/configuracao.svg" alt="Icone" /> Configurações</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <!-- Título centralizado na tela -->
+      <div class="titulo-centralizado">
+        <h1>Dashboard</h1>
+      </div>
+
+      <!-- Barra de busca no canto superior direito -->
+      <div class="barra-busca">
+        <input type="text" placeholder="Pesquisar..." />
+        <!-- Campo de texto para pesquisa futura -->
+      </div>
+    </header>
+
+    <!-- Conteúdo principal com balões grandes e pequenos -->
+    <main>
+      <!-- Seção para os balões principais -->
+      <section class="baloes-principais">
+        <div class="balao grande">Finanças</div>
+        <!-- Balão maior para gráfico 1 -->
+        <div class="balao grande">Semana</div>
+        <!-- Balão maior para gráfico 2 -->
+      </section>
+
+      <!-- Seção para os balões menores -->
+      <h2>Financeiro</h2>
+      <section class="baloes-menores">
+        <div class="balao pequeno">Receitas</div>
+        <!-- Balão menor 1 -->
+        <div class="balao pequeno">Despesas</div>
+        <!-- Balão menor 2 -->
+        <div class="balao pequeno">Saldo</div>
+        <!-- Balão menor 3 -->
+      </section>
+      <!-- Seção para os balões micro -->
+      <h2>Central do Usuário</h2>
+      <section class="baloes-micro">
+        <div class="balao micro">Clientes</div>
+        <!-- Balão mircro 1 -->
+        <div class="balao micro">Cadastro</div>
+        <!-- Balão micro 2 -->
+        <div class="balao micro">Pendências</div>
+        <!-- Balão micro 3 -->
+        <div class="balao micro">Fornecedores</div>
+        <!-- Balão mircro 4 -->
+      </section>
+    </main>
+
+    <!-- Link para o arquivo JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>

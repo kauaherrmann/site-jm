@@ -1,0 +1,181 @@
+/* Estilização global, remove margens e define a fonte */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montse", Arial, sans-serif; /* Define a fonte principal */
+}
+
+/* Define o layout da página com flexbox para organização */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: white; /* Cor de fundo neutra */
+}
+
+/* Estilos para o cabeçalho (header), com espaçamento e sombras */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5e5e5;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o header */
+  width: 100%;
+  position: relative;
+  height: 70px;
+}
+
+/* Estilo para o menu lateral fixo */
+.menu-lateral {
+  width: 200px;
+  height: 100%;
+  background-color: #f4e9e9; /* Cor de fundo clara */
+  padding: 20px;
+  position: fixed; /* Fixa o menu na lateral */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra para separar do conteúdo */
+}
+
+/* Lista do menu lateral, organizada em coluna */
+.menu-lateral ul {
+  list-style: none; /* Remove a bolinha padrão da lista */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaçamento entre os itens da lista */
+  margin-top: 50px;
+  color: #6c4950;
+}
+
+/* Estilo para os itens do menu com ícones */
+.menu-lateral ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Tamanho dos ícones no menu lateral */
+.menu-lateral ul li img {
+  width: 50px;
+  height: 20px;
+  align-items: first baseline;
+}
+
+/* Centraliza o título no meio do cabeçalho */
+.titulo-centralizado {
+  flex: 1;
+  text-align: center;
+  color: #6c4950;
+}
+
+/* Estilo da barra de busca no canto direito */
+.barra-busca {
+  margin-right: 20px;
+}
+
+/* Estilo do campo de texto da barra de busca */
+.barra-busca input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 200px;
+}
+
+/* Define o conteúdo principal, com margem para o menu lateral */
+main {
+  margin-left: 220px; /* Espaço para o menu lateral */
+  padding: 20px;
+}
+.logo_JM img {
+  width: 80px; /* Ajuste o valor para o tamanho desejado */
+  height: auto; /* Mantém a proporção correta da imagem */
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
+  display: block; /* Garante que a imagem seja tratada como um bloco */
+  margin-left: 30px;
+}
+/* Remove o sublinhado dos links em todas as situações */
+a {
+  text-decoration: none;
+  color: inherit; /* Mantém a cor original do texto */
+}
+
+/* Remove o sublinhado no hover, sem efeitos de hover */
+a:hover {
+  text-decoration: none;
+}
+
+/* Estilo específico para a página ativa (indicação de qual aba estou) */
+.menu-lateral ul li.active a {
+  background-color: #e9d6d5; /* Cor de fundo da aba ativa */
+  border-radius: 8px; /* Borda arredondada para o link ativo */
+  padding: 10px; /* Adiciona espaçamento ao redor do item ativo */
+  font-weight: bold; /* Deixa o texto mais forte para destacar */
+  width: 190px; /* Deixa o tamanho padrão horizontalmente */
+}
+
+/* Alinha os balões principais no centro */
+.baloes-principais {
+  display: flex;
+  gap: 20px; /* Espaçamento entre os balões */
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Alinha os balões menores no centro, com espaçamento */
+.baloes-menores {
+  display: flex;
+  gap: 20px; /* Espaçamento entre os balões */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Estilo geral dos balões */
+.balao {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para os balões */
+  text-align: center;
+}
+
+/* Balões maiores para gráficos */
+.balao.grande {
+  width: 65%; /* Largura de 40% da tela */
+  height: 200px;
+}
+
+/* Balões menores para outras informações */
+.balao.pequeno {
+  width: 40%; /* Largura de 30% da tela */
+  height: 130px;
+}
+.baloes-micro {
+  display: flex;
+  gap: 20px; /* Espaçamento entre os balões */
+  justify-content: center;
+  margin-top: 20px;
+}
+.balao.micro {
+  width: 30%; /* Largura de 30% da tela */
+  height: 100px;
+}
+.logo_JM img {
+  width: 80px; /* Ajuste o valor para o tamanho desejado */
+  height: auto; /* Mantém a proporção correta da imagem */
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
+  display: block; /* Garante que a imagem seja tratada como um bloco */
+  margin-left: 30px;
+}
+/* Remove o sublinhado dos links em todas as situações */
+a {
+  text-decoration: none;
+  color: inherit; /* Mantém a cor original do texto */
+}
+
+/* Remove o sublinhado no hover, sem efeitos de hover */
+a:hover {
+  text-decoration: none;
+}
